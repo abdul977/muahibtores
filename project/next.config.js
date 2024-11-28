@@ -20,6 +20,16 @@ const nextConfig = {
   },
   reactStrictMode: true,
   redirects,
+  webpack: (config) => {
+    config.experiments = {
+      ...config.experiments,
+      topLevelAwait: true,
+    }
+    return config
+  },
+  experimental: {
+    serverComponentsExternalPackages: ['sharp'],
+  }
 }
 
 export default withPayload(nextConfig)
